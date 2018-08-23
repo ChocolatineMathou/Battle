@@ -1,4 +1,4 @@
-feature 'Submit names' do
+feature 'Battle' do
 
   # As two Players,
   # So we can play a personalised game of Battle,
@@ -13,7 +13,7 @@ feature 'Submit names' do
     # I want to see Player 2's Hit Points
     scenario 'Viewing hit points' do
       sign_in_and_play
-      expect(page).to have_content('60HP')
+      expect(page).to have_content('Dumbledore: 60HP')
     end
 
     # As Player 1,
@@ -22,7 +22,17 @@ feature 'Submit names' do
     scenario 'Attacking Player 2' do
       sign_in_and_play
       click_button 'Attack'
-      expect(page).to have_content('You attacked')
+      expect(page).to have_content('attacked')
+    end
+
+    # As Player 1,
+    # So I can start to win a game of Battle,
+    # I want my attack to reduce Player 2's HP by 10
+    scenario 'Reduce Player\'s HP by 10' do
+      sign_in_and_play
+      click_button 'Attack'
+      expect(page).not_to have_content('Dumbledore: 60HP')
+      expect(page).to have_content('Dumbledore: 50HP')
     end
 
 end
