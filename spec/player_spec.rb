@@ -16,13 +16,6 @@ describe Player do
     end
   end
 
-  describe '#attack' do
-    it 'damages the player' do
-      expect(hagrid).to receive(:attack)
-      hagrid.attack(dumbledore)
-    end
-  end
-
   describe '#receive_damage' do
     it 'reduces the player hit points' do
       expect { dumbledore.receive_damage }.to change { dumbledore.hit_points }.by(-10)
