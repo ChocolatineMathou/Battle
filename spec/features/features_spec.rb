@@ -1,4 +1,4 @@
-feature 'Battle' do
+feature 'Features - Battle' do
 
   # As two Players,
   # So we can play a personalised game of Battle,
@@ -33,6 +33,20 @@ feature 'Battle' do
       click_button 'Attack'
       expect(page).not_to have_content('Dumbledore: 60HP')
       expect(page).to have_content('Dumbledore: 50HP')
+    end
+
+    # As two Players,
+    # So we can continue our game of Battle,
+    # We want to switch turns
+    scenario 'We want to switch turns' do
+      sign_in_and_play
+      click_button 'Attack'
+      #expect(page).not_to have_content('Dumbledore: 60HP')
+      expect(page).to have_content('Dumbledore: 50HP')
+      click_button 'Return'
+      click_button 'Attack'
+      expect(page).not_to have_content('Hagrid: 60HP')
+      expect(page).to have_content('Hagrid: 50HP')
     end
 
 end

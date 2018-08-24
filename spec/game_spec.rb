@@ -24,4 +24,11 @@ describe Game do
       game.attack(player_2)
     end
   end
+
+  describe '#switch' do
+    it 'switches the player' do
+      game.switch
+      expect(game.current_player).to eq(player_2)
+    end
+  end
 end
